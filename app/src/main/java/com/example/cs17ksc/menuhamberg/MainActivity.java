@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         switch(item.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
-                break;
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();break;
             case R.id.nav_favourites:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new FavouriteFragment()).commit();break;
             case R.id.nav_search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new SearchFragment()).commit();break;
+
 
 
         }
