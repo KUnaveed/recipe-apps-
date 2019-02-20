@@ -72,6 +72,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                toSavedRecipe();
             }
 
         });
@@ -106,6 +107,13 @@ public class UserProfile extends AppCompatActivity {
 
         Intent k =new Intent(this, UserDetailsChange.class);
         startActivity(k);
+
+    }
+
+    public void toSavedRecipe(){
+
+        Intent m = new Intent(this, SavedRecipes.class);
+        startActivity(m);
 
     }
 
