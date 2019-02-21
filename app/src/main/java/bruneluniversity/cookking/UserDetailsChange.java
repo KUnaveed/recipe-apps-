@@ -17,6 +17,9 @@ public class UserDetailsChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details_change);
 
+        getSupportActionBar().setTitle("Change details");
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         b1 = (Button) findViewById(R.id.to_profile);
         b2 = (Button) findViewById(R.id.save_changes);
 

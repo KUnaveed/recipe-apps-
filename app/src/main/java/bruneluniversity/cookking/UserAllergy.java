@@ -17,6 +17,9 @@ public class UserAllergy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_allergy);
 
+        getSupportActionBar().setTitle("Allergy Prefeencces");
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         b1 = findViewById(R.id.save_changes);
         b2 = findViewById(R.id.to_profile);
 

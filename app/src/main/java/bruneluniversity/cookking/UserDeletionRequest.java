@@ -18,6 +18,9 @@ public class UserDeletionRequest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_deletion_request);
 
+        getSupportActionBar().setTitle("Request data deletion");
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         b1 = findViewById(R.id.button_deletion);
         b2 = findViewById(R.id.to_profile1);
 
