@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SavedRecipes"
-            android:parentActivityName=".UserProfile"></activity>
+
         <activity
             android:name=".UserProfile"
             android:label="@string/title_activity_user_profile"
@@ -21,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SavedRecipes"
+            android:parentActivityName=".UserProfile"></activity>
 
         <activity android:name=".UserDeletionRequest"
             android:parentActivityName=".UserProfile"></activity>

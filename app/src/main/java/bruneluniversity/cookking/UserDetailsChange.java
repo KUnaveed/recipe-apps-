@@ -1,8 +1,10 @@
 package bruneluniversity.cookking;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,6 +14,7 @@ public class UserDetailsChange extends AppCompatActivity {
     public Button b2;
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +22,8 @@ public class UserDetailsChange extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Change details");
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
+
 
         b1 = (Button) findViewById(R.id.to_profile);
         b2 = (Button) findViewById(R.id.save_changes);

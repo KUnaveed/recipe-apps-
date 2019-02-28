@@ -31,6 +31,8 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
+       // getActionBar().setTitle("ss");
+
       //  Button b1 = findViewById(R.id.button_username)
          b1 = findViewById(R.id.button_allergy);
          b2 = findViewById(R.id.button_deletion);
