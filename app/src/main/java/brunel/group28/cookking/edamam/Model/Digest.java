@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import Raj.com.Model.Nutrients.Sub;
+import brunel.group28.cookking.edamam.Model.Nutrients.Sub;
+
 
 public class Digest {
 

@@ -4,31 +4,32 @@ package brunel.group28.cookking.edamam.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import Raj.com.Model.Nutrients.CA_;
-import Raj.com.Model.Nutrients.CHOCDF_;
-import Raj.com.Model.Nutrients.CHOLE_;
-import Raj.com.Model.Nutrients.ENERCKCAL_;
-import Raj.com.Model.Nutrients.FASAT_;
-import Raj.com.Model.Nutrients.FAT_;
-import Raj.com.Model.Nutrients.FE_;
-import Raj.com.Model.Nutrients.FIBTG_;
-import Raj.com.Model.Nutrients.FOLDFE_;
-import Raj.com.Model.Nutrients.K_;
-import Raj.com.Model.Nutrients.MG_;
-import Raj.com.Model.Nutrients.NA_;
-import Raj.com.Model.Nutrients.NIA_;
-import Raj.com.Model.Nutrients.PROCNT_;
-import Raj.com.Model.Nutrients.P_;
-import Raj.com.Model.Nutrients.RIBF_;
-import Raj.com.Model.Nutrients.THIA_;
-import Raj.com.Model.Nutrients.TOCPHA_;
-import Raj.com.Model.Nutrients.VITARAE_;
-import Raj.com.Model.Nutrients.VITB12_;
-import Raj.com.Model.Nutrients.VITB6A_;
-import Raj.com.Model.Nutrients.VITC_;
-import Raj.com.Model.Nutrients.VITD_;
-import Raj.com.Model.Nutrients.VITK1_;
-import Raj.com.Model.Nutrients.ZN_;
+import brunel.group28.cookking.edamam.Model.Nutrients.CA_;
+import brunel.group28.cookking.edamam.Model.Nutrients.CHOCDF_;
+import brunel.group28.cookking.edamam.Model.Nutrients.CHOLE_;
+import brunel.group28.cookking.edamam.Model.Nutrients.ENERCKCAL_;
+import brunel.group28.cookking.edamam.Model.Nutrients.FASAT_;
+import brunel.group28.cookking.edamam.Model.Nutrients.FAT_;
+import brunel.group28.cookking.edamam.Model.Nutrients.FE_;
+import brunel.group28.cookking.edamam.Model.Nutrients.FIBTG_;
+import brunel.group28.cookking.edamam.Model.Nutrients.FOLDFE_;
+import brunel.group28.cookking.edamam.Model.Nutrients.K_;
+import brunel.group28.cookking.edamam.Model.Nutrients.MG_;
+import brunel.group28.cookking.edamam.Model.Nutrients.NA_;
+import brunel.group28.cookking.edamam.Model.Nutrients.NIA_;
+import brunel.group28.cookking.edamam.Model.Nutrients.PROCNT_;
+import brunel.group28.cookking.edamam.Model.Nutrients.P_;
+import brunel.group28.cookking.edamam.Model.Nutrients.RIBF_;
+import brunel.group28.cookking.edamam.Model.Nutrients.THIA_;
+import brunel.group28.cookking.edamam.Model.Nutrients.TOCPHA_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITARAE_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITB12_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITB6A_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITC_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITD_;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITK1_;
+import brunel.group28.cookking.edamam.Model.Nutrients.ZN_;
+
 
 public class TotalDaily {
 

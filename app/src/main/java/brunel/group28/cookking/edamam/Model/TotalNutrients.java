@@ -3,7 +3,38 @@ package brunel.group28.cookking.edamam.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import Raj.com.Model.Nutrients.*;
+import brunel.group28.cookking.edamam.Model.Nutrients.CA;
+import brunel.group28.cookking.edamam.Model.Nutrients.CHOCDF;
+import brunel.group28.cookking.edamam.Model.Nutrients.CHOLE;
+import brunel.group28.cookking.edamam.Model.Nutrients.ENERCKCAL;
+import brunel.group28.cookking.edamam.Model.Nutrients.FAMS;
+import brunel.group28.cookking.edamam.Model.Nutrients.FAPU;
+import brunel.group28.cookking.edamam.Model.Nutrients.FASAT;
+import brunel.group28.cookking.edamam.Model.Nutrients.FAT;
+import brunel.group28.cookking.edamam.Model.Nutrients.FATRN;
+import brunel.group28.cookking.edamam.Model.Nutrients.FE;
+import brunel.group28.cookking.edamam.Model.Nutrients.FIBTG;
+import brunel.group28.cookking.edamam.Model.Nutrients.FOLAC;
+import brunel.group28.cookking.edamam.Model.Nutrients.FOLDFE;
+import brunel.group28.cookking.edamam.Model.Nutrients.FOLFD;
+import brunel.group28.cookking.edamam.Model.Nutrients.K;
+import brunel.group28.cookking.edamam.Model.Nutrients.MG;
+import brunel.group28.cookking.edamam.Model.Nutrients.NA;
+import brunel.group28.cookking.edamam.Model.Nutrients.NIA;
+import brunel.group28.cookking.edamam.Model.Nutrients.P;
+import brunel.group28.cookking.edamam.Model.Nutrients.PROCNT;
+import brunel.group28.cookking.edamam.Model.Nutrients.RIBF;
+import brunel.group28.cookking.edamam.Model.Nutrients.SUGAR;
+import brunel.group28.cookking.edamam.Model.Nutrients.THIA;
+import brunel.group28.cookking.edamam.Model.Nutrients.TOCPHA;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITARAE;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITB12;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITB6A;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITC;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITD;
+import brunel.group28.cookking.edamam.Model.Nutrients.VITK1;
+import brunel.group28.cookking.edamam.Model.Nutrients.ZN;
+
 
 public class TotalNutrients {
 
