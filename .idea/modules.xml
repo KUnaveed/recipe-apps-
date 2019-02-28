@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Menuhamberg.iml" filepath="$PROJECT_DIR$/Menuhamberg.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cs2001-18-19-group-28.iml" filepath="$PROJECT_DIR$/cs2001-18-19-group-28.iml" />
     </modules>
   </component>
 </project>

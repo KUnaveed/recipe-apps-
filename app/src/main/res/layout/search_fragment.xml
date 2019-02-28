@@ -9,6 +9,22 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     tools:context="com.example.cs17ksc.menuhamberg.MainActivity">
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.022"
+        android:layout_marginTop="435dp" />
 
     <EditText
         android:id="@+id/editText"

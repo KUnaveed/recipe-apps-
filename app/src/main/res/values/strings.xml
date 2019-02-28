@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">Menuhamberg</string>
 
+    <string-array name="names">
+        <item>Dairy-Free</item>
+        <item>Alcohol-Free</item>
+        <item>Wheat-Free</item>
+        <item>Nut-Free</item>
+        <item>Alcohol-Free</item>
+        <item>Vegan</item>
+        <item>Vegetarian</item>
+    </string-array>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
 </resources>
