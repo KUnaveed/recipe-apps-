@@ -6,7 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
@@ -18,16 +23,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
+
 
 import brunel.group28.cookking.MainActivity;
 import brunel.group28.cookking.R;
@@ -42,23 +39,29 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     private int LEDLength;
 
     private Switch vibrationSwitch;
-    private Spinner vibrationLength;
-
-
-    private int IntegerVibrationDuration;
-
-    private Button UpdateButton;
-    private Button ChangeActivity;
-
-
     private TextView VibrationDuration;
     private int VibrateLength;
 
-    SharedPreferences sharedPref;
+    private Switch ringtoneSwitch;
+    private TextView RingtoneDuration;
+    private int RingToneLength;
 
+
+    //private Spinner vibrationLength;
+
+
+    //private int IntegerVibrationDuration;
+
+
+    //button
+    private Button UpdateButton;
+    private Button ChangeActivity;
     private Button TestNotification;
     private Button ClearSettingPreferences;
 
+
+    //pref
+    SharedPreferences sharedPref;
 
 
 
@@ -88,11 +91,17 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         VibrationDuration = findViewById(R.id.VibrationLength);
         VibrationDuration.setOnClickListener(this);
 
+        RingtoneDuration = findViewById(R.id.RingtoneLength);
+        RingtoneDuration.setOnClickListener(this);
+
         TestNotification = findViewById(R.id.testnotification);
         TestNotification.setOnClickListener(this);
 
         ClearSettingPreferences = findViewById(R.id.ClearSettingsButton);
         ClearSettingPreferences.setOnClickListener(this);
+
+
+
 
     }
 
@@ -100,6 +109,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v){
 
         if(v == UpdateButton) {
+            RingToneLength = Integer.parseInt(RingtoneDuration.getText().toString());
             VibrateLength = Integer.parseInt(VibrationDuration.getText().toString());
             LEDLength = Integer.parseInt(LEDDuration.getText().toString());
            WritePreferences();
@@ -140,11 +150,6 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
         }
 
-
-
-
-
-
     }
 
 
@@ -152,7 +157,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     public void Notify(){
         vibrationSwitch = findViewById(R.id.VibrateSwitch);
         LEDSwitcher = findViewById(R.id.LEDSwitch);
-
+        ringtoneSwitch = findViewById(R.id.RingtoneSwitch);
 
                 if(vibrationSwitch.isChecked()) {
                 Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -162,7 +167,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
                       //  IntegerVibrationDuration = Integer.parseInt(vibrationDuration);
 
-                        vibrator.vibrate(IntegerVibrationDuration);
+                        vibrator.vibrate(VibrateLength);
                         // }
 
                  }
@@ -233,26 +238,21 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         editor.putInt("LEDDuration", 0);
     }
 
+
+    if(isRingtoneonOrOff()){
+        System.out.println("ray999");
+        editor.putBoolean("ringtoneSwitch", true);
+        int output = GetRingtoneDuration();
+        editor.putInt("RingtoneDuration", output);
+    }
+    else {
+        System.out.println("ray000");
+        editor.putBoolean("ringtoneSwitch", false);
+        editor.putInt("RingtoneDuration", 0);
+    }
+
+
     editor.commit();
-
-
-        //THIS WAS RIGHT BEFORE
-//        sharedPref = getSharedPreferences("SettingsInfo", Context.MODE_PRIVATE);
-//
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//
-//        editor.putString("vibrationSwitch", String.valueOf("true"));
-//        editor.putString("LEDSwitch", String.valueOf("false"));
-//
-//
-//        editor.commit();
-//
-//
-//        System.out.println("okokok");
-//        System.out.println("okokok");
-//        System.out.println("okokok");
-//        System.out.println("okokok");
-
 
     }
 
@@ -272,9 +272,15 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         boolean ledswitch = sharedPref.getBoolean("LEDSwitch", false);
         int ledduration = sharedPref.getInt("LEDDuration", 0);
 
+        boolean ringtoneswitch = sharedPref.getBoolean("ringtoneSwitch", false);
+        int ringtoneduration = sharedPref.getInt("RingtoneDuration", 0);
 
         System.out.println(vibrateswitch + "this is vib Switch");
         System.out.println(vibrateduration + "this is vib duration");
+
+        System.out.println(ringtoneswitch + "this is ringtone Switch");
+        System.out.println(ringtoneduration + "this is ringtone duration");
+
 
 
         if (vibrateswitch == true && vibrateduration > 0){
@@ -290,11 +296,31 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             Notification notif = new Notification();
             notif.ledARGB = 0xFFff0000;
             notif.flags = Notification.FLAG_SHOW_LIGHTS;
-            notif.ledOnMS = 1000;
+            notif.ledOnMS = ledduration;
             notif.ledOffMS = 1000;
 
         }
 
+        if(ringtoneswitch == true && ringtoneduration > 0){
+
+            final MediaPlayer mp;
+
+            mp = MediaPlayer.create(this, R.raw.ringtone);
+            mp.start();
+
+
+            new CountDownTimer(ringtoneduration*1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    mp.start();
+                }
+
+                public void onFinish() {
+                   System.out.println("completed");
+                }
+            }.start();
+
+        }
 
 
 
@@ -337,6 +363,20 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    public boolean isRingtoneonOrOff(){
+
+        ringtoneSwitch = findViewById(R.id.RingtoneSwitch);
+
+        if(ringtoneSwitch.isChecked() == true){
+
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 
     public int GetVibrationDuration(){
 
@@ -361,13 +401,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    public int GetRingtoneDuration(){
 
 
+        return RingToneLength;
 
 
-
-
-
+    }
 
 
 
