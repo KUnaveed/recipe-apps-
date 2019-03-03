@@ -38,7 +38,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     //private boolean IsLEDOn;
 
     private Switch LEDSwitcher;
-    private String LEDDurationer;
+    private TextView LEDDuration;
+    private int LEDLength;
 
     private Switch vibrationSwitch;
     private Spinner vibrationLength;
@@ -51,8 +52,12 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
 
     private TextView VibrationDuration;
+    private int VibrateLength;
 
     SharedPreferences sharedPref;
+
+    private Button TestNotification;
+    private Button ClearSettingPreferences;
 
 
 
@@ -74,12 +79,20 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         LEDSwitcher = findViewById(R.id.LEDSwitch);
         LEDSwitcher.setOnClickListener(this);
 
+        LEDDuration = findViewById(R.id.LEDLength);
+        LEDDuration.setOnClickListener(this);
+
         vibrationSwitch = findViewById(R.id.VibrateSwitch);
         vibrationSwitch.setOnClickListener(this);
 
         VibrationDuration = findViewById(R.id.VibrationLength);
         VibrationDuration.setOnClickListener(this);
 
+        TestNotification = findViewById(R.id.testnotification);
+        TestNotification.setOnClickListener(this);
+
+        ClearSettingPreferences = findViewById(R.id.ClearSettingsButton);
+        ClearSettingPreferences.setOnClickListener(this);
 
     }
 
@@ -87,12 +100,9 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v){
 
         if(v == UpdateButton) {
-
-            try {
-                usingFileWriter();
-            } catch (IOException e) {
-
-            }
+            VibrateLength = Integer.parseInt(VibrationDuration.getText().toString());
+            LEDLength = Integer.parseInt(LEDDuration.getText().toString());
+           WritePreferences();
         }
 
         //System.out.println("rayayayay");
@@ -101,6 +111,32 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
             Intent myIntent = new Intent(this, Testing2.class);
             startActivity(myIntent);
+
+        }
+
+//        if(v == VibrationDuration){
+//           // VibrateLength = Integer.parseInt(VibrationDuration.toString());
+//
+//            VibrateLength = Integer.parseInt(VibrationDuration.getText().toString());
+//
+//
+//        }
+
+
+//        if(v == LEDDuration){
+//            LEDLength = Integer.parseInt(LEDDuration.toString());
+//        }
+
+        if(v == TestNotification){
+            notification();
+        }
+
+        if(v == ClearSettingPreferences){
+            sharedPref = getSharedPreferences("SettingsInfo", Context.MODE_PRIVATE);
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            editor.clear().commit();
 
         }
 
@@ -134,7 +170,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
                 if(LEDSwitcher.isChecked()){
 
-                    if(LEDDurationer.contains("[0-9]+")) {
+
 
 
 
@@ -146,7 +182,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
                     notif.ledOffMS = 1000;
 
 
-                    }
+
 
 
                 }
@@ -157,27 +193,47 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
 
 
-    public  void usingFileWriter() throws IOException {
+    public void WritePreferences() {
 
     sharedPref = getSharedPreferences("SettingsInfo", Context.MODE_PRIVATE);
 
     SharedPreferences.Editor editor = sharedPref.edit();
 
     if(isVibrationOnOrOff()){
+        System.out.println("ray555");
         editor.putBoolean("vibrationSwitch", true);
+
+        System.out.println(GetVibrationDuration() + "vibratedurtation method returned this");
+
+        int output = GetVibrationDuration();
+
+        System.out.println("ray555output" + output);
+
+        editor.putInt("VibrationDuration", output);
+
     }else{
+        System.out.println("ray666");
         editor.putBoolean("vibrationSwitch", false);
+        editor.putInt("VibrationDuration", 0);
     }
 
 
     if(isLEDonOrOff()){
+        System.out.println("ray777");
         editor.putBoolean("LEDSwitch", true);
+        int output = GetLEDDuration();
+
+        System.out.println("ray777 output" + output);
+
+        editor.putInt("LEDDuration", output);
     }
     else{
+        System.out.println("ray888");
         editor.putBoolean("LEDSwitch", false);
+        editor.putInt("LEDDuration", 0);
     }
 
-
+    editor.commit();
 
 
         //THIS WAS RIGHT BEFORE
@@ -199,6 +255,58 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
+
+
+
+
+
+    public void notification(){
+
+        System.out.println("ok");
+
+        sharedPref = getSharedPreferences("SettingsInfo", Context.MODE_PRIVATE);
+        boolean vibrateswitch  = sharedPref.getBoolean("vibrationSwitch",false);
+        int vibrateduration = sharedPref.getInt("VibrationDuration", 0);
+
+        boolean ledswitch = sharedPref.getBoolean("LEDSwitch", false);
+        int ledduration = sharedPref.getInt("LEDDuration", 0);
+
+
+        System.out.println(vibrateswitch + "this is vib Switch");
+        System.out.println(vibrateduration + "this is vib duration");
+
+
+        if (vibrateswitch == true && vibrateduration > 0){
+            System.out.println("ray123");
+
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(vibrateduration*1000);
+        }
+
+        if(ledswitch == true && ledduration > 0){
+            System.out.println("ray321");
+            NotificationManager nm = (NotificationManager) getSystemService( NOTIFICATION_SERVICE );
+            Notification notif = new Notification();
+            notif.ledARGB = 0xFFff0000;
+            notif.flags = Notification.FLAG_SHOW_LIGHTS;
+            notif.ledOnMS = 1000;
+            notif.ledOffMS = 1000;
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 
     public boolean isVibrationOnOrOff(){
 
@@ -228,6 +336,33 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         }
 
     }
+
+
+    public int GetVibrationDuration(){
+
+
+
+            return VibrateLength;
+
+
+    }
+
+
+    public int GetLEDDuration(){
+
+        if(LEDLength > 0 && LEDLength <10){
+
+            return LEDLength;
+
+        }
+        else{
+            return 0;
+        }
+
+    }
+
+
+
 
 
 
