@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
@@ -61,10 +62,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@color/colorTextHint"
+            android:background="#900C27"
             android:text="@string/text_login"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textAllCaps="true"
+            android:textColor="#F6C667"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewLinkRegister"
@@ -73,8 +76,9 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="@string/text_not_member"
-            android:textColor="@color/colorTextHint"
-            android:textSize="24sp" />
+            android:textColor="#900C27"
+            android:textSize="24sp"
+            app:textAllCaps="true" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v4.widget.NestedScrollView>
