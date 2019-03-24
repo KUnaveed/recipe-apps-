@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import brunel.group28.cookking.R;
 import brunel.group28.cookking.edamam.Controller.RetrofitClient;
 import brunel.group28.cookking.edamam.Model.HitResponse;
@@ -13,6 +16,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    static String RecipeName; // recipe name
+    static ArrayList<String> RecipeIngredients; // RecipeIngredients with getting rid of unuseful words or phrases.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +42,20 @@ public class MainActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 System.out.println("Status code is" + statusCode);
                 //System.out.println(response.body().getHits().get(0).getRecipe().size());
+
+
                 System.out.println(response.body().getHits().get(0).getRecipe().getLabel());
+                String RecipeName = response.body().getHits().get(0).getRecipe().getLabel();
+                getRecipeName(RecipeName);
+
                 System.out.println(response.body().getHits().get(0).getRecipe().getIngredientLines());
-                System.out.println(response.body().getHits());
+                ArrayList<String> Ingredients = new ArrayList<String>();
+
+
+
+
+
+               // System.out.println(response.body().getHits());
                 // while(recipe.hasNext)
 
                 //System.out.println("this is the recipe "+recipe.toString());
@@ -55,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public static void getRecipeName(String Recipename){
+
+       RecipeName = Recipename;
+
+    }
+
+
 
 
 
