@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> Ingredients = new ArrayList<String>();
 
 
+                for(int i = 0; i < response.body().getHits().get(0).getRecipe().getIngredients().size(); i++){
+                    Ingredients.add(response.body().getHits().get(0).getRecipe().getIngredients().get(i).getText());
+                    System.out.println(response.body().getHits().get(0).getRecipe().getIngredients().get(i).getText());
+                }
+
+                RegexRecipes(Ingredients);
 
 
 
@@ -80,6 +86,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public static void RegexRecipes(ArrayList<String> RecipeIngredientsRegex ){
+
+        ArrayList<String> RegexList = new ArrayList<String>();
+
+       // .replaceAll(  "0-9,"");
+        // replaceAll("\\p{P}","");
+        // above removes punctuation marks that include all brackets, braces and sq. brackets
+
+        RegexList.add("peeled");
+        RegexList.add("and");
+        RegexList.add("cut");
+        RegexList.add("into");
+        RegexList.add("chunks");
+        RegexList.add("chopped");
+        RegexList.add("cup");
+        RegexList.add("thawed");
+        RegexList.add("pieces");
+
+        for(int i = 0; i < RecipeIngredientsRegex.size(); i++) {
+            RecipeIngredientsRegex.get(i).replaceAll("0-9", "");
+            RecipeIngredientsRegex.get(i).replaceAll("\\p{P}", "");
+
+
+        }
+            for (int j = 0; j < RecipeIngredientsRegex.size(); j++) {
+                RecipeIngredientsRegex.get(j).replaceAll(RegexList.get(j), "");
+
+            
+        }
+
+       RecipeIngredients = RecipeIngredientsRegex;
+
+    }
 
 
 
