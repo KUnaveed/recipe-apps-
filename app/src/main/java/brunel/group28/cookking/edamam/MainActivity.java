@@ -111,10 +111,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
             for (int j = 0; j < RecipeIngredientsRegex.size(); j++) {
-                RecipeIngredientsRegex.get(j).replaceAll(RegexList.get(j), "");
+                for(int k = 0; k < RegexList.size(); k++) {
+                    RecipeIngredientsRegex.get(j).replaceAll(RegexList.get(k),"");
+                }
+            }
 
-            
-        }
+            System.out.println("testing from here");
+
+            for(int i = 0; i < RecipeIngredientsRegex.size(); i++){
+                System.out.println(RecipeIngredientsRegex.get(i));
+            }
 
        RecipeIngredients = RecipeIngredientsRegex;
 
